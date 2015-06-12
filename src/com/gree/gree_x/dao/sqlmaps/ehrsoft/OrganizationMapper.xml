@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gree.gree_x.dao.ehrsoft.OrganizationMapper" >
+  <resultMap id="BaseResultMap" type="com.gree.gree_x.model.ehrsoft.Organization" >
+    <id column="CODESETID" property="codesetid" jdbcType="VARCHAR" />
+    <id column="CODEITEMID" property="codeitemid" jdbcType="VARCHAR" />
+    <result column="CODEITEMDESC" property="codeitemdesc" jdbcType="VARCHAR" />
+    <result column="PARENTID" property="parentid" jdbcType="VARCHAR" />
+    <result column="CHILDID" property="childid" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+    <result column="GRADE" property="grade" jdbcType="DECIMAL" />
+    <result column="A0000" property="a0000" jdbcType="DECIMAL" />
+    <result column="GROUPID" property="groupid" jdbcType="DECIMAL" />
+    <result column="INVALID" property="invalid" jdbcType="DECIMAL" />
+    <result column="FLAG" property="flag" jdbcType="DECIMAL" />
+    <result column="LAYER" property="layer" jdbcType="DECIMAL" />
+    <result column="CORCODE" property="corcode" jdbcType="VARCHAR" />
+    <result column="END_DATE" property="endDate" jdbcType="TIMESTAMP" />
+    <result column="START_DATE" property="startDate" jdbcType="TIMESTAMP" />
+    <result column="VIEW_CHART" property="viewChart" jdbcType="DECIMAL" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.gree.gree_x.model.ehrsoft.Organization" extends="BaseResultMap" >
+    <result column="POS_COND" property="posCond" jdbcType="CLOB" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    CODESETID, CODEITEMID, CODEITEMDESC, PARENTID, CHILDID, STATE, GRADE, A0000, GROUPID, 
+    INVALID, FLAG, LAYER, CORCODE, END_DATE, START_DATE, VIEW_CHART
+  </sql>
+  <sql id="Blob_Column_List" >
+    POS_COND
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.gree.gree_x.model.ehrsoft.OrganizationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from EHRSOFT.ORGANIZATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gree.gree_x.model.ehrsoft.OrganizationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from EHRSOFT.ORGANIZATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.gree.gree_x.model.ehrsoft.OrganizationExample" >
+    delete from EHRSOFT.ORGANIZATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gree.gree_x.model.ehrsoft.Organization" >
+    insert into EHRSOFT.ORGANIZATION (CODESETID, CODEITEMID, CODEITEMDESC, 
+      PARENTID, CHILDID, STATE, 
+      GRADE, A0000, GROUPID, 
+      INVALID, FLAG, LAYER, 
+      CORCODE, END_DATE, START_DATE, 
+      VIEW_CHART, POS_COND)
+    values (#{codesetid,jdbcType=VARCHAR}, #{codeitemid,jdbcType=VARCHAR}, #{codeitemdesc,jdbcType=VARCHAR}, 
+      #{parentid,jdbcType=VARCHAR}, #{childid,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{grade,jdbcType=DECIMAL}, #{a0000,jdbcType=DECIMAL}, #{groupid,jdbcType=DECIMAL}, 
+      #{invalid,jdbcType=DECIMAL}, #{flag,jdbcType=DECIMAL}, #{layer,jdbcType=DECIMAL}, 
+      #{corcode,jdbcType=VARCHAR}, #{endDate,jdbcType=TIMESTAMP}, #{startDate,jdbcType=TIMESTAMP}, 
+      #{viewChart,jdbcType=DECIMAL}, #{posCond,jdbcType=CLOB})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gree.gree_x.model.ehrsoft.Organization" >
+    insert into EHRSOFT.ORGANIZATION
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="codesetid != null" >
+        CODESETID,
+      </if>
+      <if test="codeitemid != null" >
+        CODEITEMID,
+      </if>
+      <if test="codeitemdesc != null" >
+        CODEITEMDESC,
+      </if>
+      <if test="parentid != null" >
+        PARENTID,
+      </if>
+      <if test="childid != null" >
+        CHILDID,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="grade != null" >
+        GRADE,
+      </if>
+      <if test="a0000 != null" >
+        A0000,
+      </if>
+      <if test="groupid != null" >
+        GROUPID,
+      </if>
+      <if test="invalid != null" >
+        INVALID,
+      </if>
+      <if test="flag != null" >
+        FLAG,
+      </if>
+      <if test="layer != null" >
+        LAYER,
+      </if>
+      <if test="corcode != null" >
+        CORCODE,
+      </if>
+      <if test="endDate != null" >
+        END_DATE,
+      </if>
+      <if test="startDate != null" >
+        START_DATE,
+      </if>
+      <if test="viewChart != null" >
+        VIEW_CHART,
+      </if>
+      <if test="posCond != null" >
+        POS_COND,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="codesetid != null" >
+        #{codesetid,jdbcType=VARCHAR},
+      </if>
+      <if test="codeitemid != null" >
+        #{codeitemid,jdbcType=VARCHAR},
+      </if>
+      <if test="codeitemdesc != null" >
+        #{codeitemdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="parentid != null" >
+        #{parentid,jdbcType=VARCHAR},
+      </if>
+      <if test="childid != null" >
+        #{childid,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="grade != null" >
+        #{grade,jdbcType=DECIMAL},
+      </if>
+      <if test="a0000 != null" >
+        #{a0000,jdbcType=DECIMAL},
+      </if>
+      <if test="groupid != null" >
+        #{groupid,jdbcType=DECIMAL},
+      </if>
+      <if test="invalid != null" >
+        #{invalid,jdbcType=DECIMAL},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=DECIMAL},
+      </if>
+      <if test="layer != null" >
+        #{layer,jdbcType=DECIMAL},
+      </if>
+      <if test="corcode != null" >
+        #{corcode,jdbcType=VARCHAR},
+      </if>
+      <if test="endDate != null" >
+        #{endDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="startDate != null" >
+        #{startDate,jdbcType=TIMESTAMP},
+      </if>
+      <if test="viewChart != null" >
+        #{viewChart,jdbcType=DECIMAL},
+      </if>
+      <if test="posCond != null" >
+        #{posCond,jdbcType=CLOB},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gree.gree_x.model.ehrsoft.OrganizationExample" resultType="java.lang.Integer" >
+    select count(*) from EHRSOFT.ORGANIZATION
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

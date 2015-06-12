@@ -1,0 +1,200 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gree.gree_x.dao.HrmDepartmentMapper" >
+  <resultMap id="BaseResultMap" type="com.gree.gree_x.model.HrmDepartment" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="departmentmark" property="departmentmark" jdbcType="VARCHAR" />
+    <result column="departmentname" property="departmentname" jdbcType="VARCHAR" />
+    <result column="subcompanyid1" property="subcompanyid1" jdbcType="INTEGER" />
+    <result column="supdepid" property="supdepid" jdbcType="INTEGER" />
+    <result column="allsupdepid" property="allsupdepid" jdbcType="VARCHAR" />
+    <result column="showorder" property="showorder" jdbcType="INTEGER" />
+    <result column="canceled" property="canceled" jdbcType="CHAR" />
+    <result column="departmentcode" property="departmentcode" jdbcType="VARCHAR" />
+    <result column="coadjutant" property="coadjutant" jdbcType="INTEGER" />
+    <result column="zzjgbmfzr" property="zzjgbmfzr" jdbcType="VARCHAR" />
+    <result column="zzjgbmfgld" property="zzjgbmfgld" jdbcType="VARCHAR" />
+    <result column="jzglbmfzr" property="jzglbmfzr" jdbcType="VARCHAR" />
+    <result column="jzglbmfgld" property="jzglbmfgld" jdbcType="VARCHAR" />
+    <result column="bmfzr" property="bmfzr" jdbcType="VARCHAR" />
+    <result column="bmfgld" property="bmfgld" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, departmentmark, departmentname, subcompanyid1, supdepid, allsupdepid, showorder, 
+    canceled, departmentcode, coadjutant, zzjgbmfzr, zzjgbmfgld, jzglbmfzr, jzglbmfgld, 
+    bmfzr, bmfgld
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gree.gree_x.model.HrmDepartmentExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from HrmDepartment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.gree.gree_x.model.HrmDepartmentExample" >
+    delete from HrmDepartment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gree.gree_x.model.HrmDepartment" >
+    insert into HrmDepartment (id, departmentmark, departmentname, 
+      subcompanyid1, supdepid, allsupdepid, 
+      showorder, canceled, departmentcode, 
+      coadjutant, zzjgbmfzr, zzjgbmfgld, 
+      jzglbmfzr, jzglbmfgld, bmfzr, 
+      bmfgld)
+    values (#{id,jdbcType=INTEGER}, #{departmentmark,jdbcType=VARCHAR}, #{departmentname,jdbcType=VARCHAR}, 
+      #{subcompanyid1,jdbcType=INTEGER}, #{supdepid,jdbcType=INTEGER}, #{allsupdepid,jdbcType=VARCHAR}, 
+      #{showorder,jdbcType=INTEGER}, #{canceled,jdbcType=CHAR}, #{departmentcode,jdbcType=VARCHAR}, 
+      #{coadjutant,jdbcType=INTEGER}, #{zzjgbmfzr,jdbcType=VARCHAR}, #{zzjgbmfgld,jdbcType=VARCHAR}, 
+      #{jzglbmfzr,jdbcType=VARCHAR}, #{jzglbmfgld,jdbcType=VARCHAR}, #{bmfzr,jdbcType=VARCHAR}, 
+      #{bmfgld,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gree.gree_x.model.HrmDepartment" >
+    insert into HrmDepartment
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="departmentmark != null" >
+        departmentmark,
+      </if>
+      <if test="departmentname != null" >
+        departmentname,
+      </if>
+      <if test="subcompanyid1 != null" >
+        subcompanyid1,
+      </if>
+      <if test="supdepid != null" >
+        supdepid,
+      </if>
+      <if test="allsupdepid != null" >
+        allsupdepid,
+      </if>
+      <if test="showorder != null" >
+        showorder,
+      </if>
+      <if test="canceled != null" >
+        canceled,
+      </if>
+      <if test="departmentcode != null" >
+        departmentcode,
+      </if>
+      <if test="coadjutant != null" >
+        coadjutant,
+      </if>
+      <if test="zzjgbmfzr != null" >
+        zzjgbmfzr,
+      </if>
+      <if test="zzjgbmfgld != null" >
+        zzjgbmfgld,
+      </if>
+      <if test="jzglbmfzr != null" >
+        jzglbmfzr,
+      </if>
+      <if test="jzglbmfgld != null" >
+        jzglbmfgld,
+      </if>
+      <if test="bmfzr != null" >
+        bmfzr,
+      </if>
+      <if test="bmfgld != null" >
+        bmfgld,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="departmentmark != null" >
+        #{departmentmark,jdbcType=VARCHAR},
+      </if>
+      <if test="departmentname != null" >
+        #{departmentname,jdbcType=VARCHAR},
+      </if>
+      <if test="subcompanyid1 != null" >
+        #{subcompanyid1,jdbcType=INTEGER},
+      </if>
+      <if test="supdepid != null" >
+        #{supdepid,jdbcType=INTEGER},
+      </if>
+      <if test="allsupdepid != null" >
+        #{allsupdepid,jdbcType=VARCHAR},
+      </if>
+      <if test="showorder != null" >
+        #{showorder,jdbcType=INTEGER},
+      </if>
+      <if test="canceled != null" >
+        #{canceled,jdbcType=CHAR},
+      </if>
+      <if test="departmentcode != null" >
+        #{departmentcode,jdbcType=VARCHAR},
+      </if>
+      <if test="coadjutant != null" >
+        #{coadjutant,jdbcType=INTEGER},
+      </if>
+      <if test="zzjgbmfzr != null" >
+        #{zzjgbmfzr,jdbcType=VARCHAR},
+      </if>
+      <if test="zzjgbmfgld != null" >
+        #{zzjgbmfgld,jdbcType=VARCHAR},
+      </if>
+      <if test="jzglbmfzr != null" >
+        #{jzglbmfzr,jdbcType=VARCHAR},
+      </if>
+      <if test="jzglbmfgld != null" >
+        #{jzglbmfgld,jdbcType=VARCHAR},
+      </if>
+      <if test="bmfzr != null" >
+        #{bmfzr,jdbcType=VARCHAR},
+      </if>
+      <if test="bmfgld != null" >
+        #{bmfgld,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gree.gree_x.model.HrmDepartmentExample" resultType="java.lang.Integer" >
+    select count(*) from HrmDepartment
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

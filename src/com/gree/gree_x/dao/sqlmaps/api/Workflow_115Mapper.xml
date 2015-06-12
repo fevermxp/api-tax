@@ -1,0 +1,449 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gree.gree_x.dao.api.Workflow_115Mapper" >
+  <resultMap id="BaseResultMap" type="com.gree.gree_x.model.api.Workflow_115" >
+    <result column="requestId" property="requestid" jdbcType="INTEGER" />
+    <result column="tarxm" property="tarxm" jdbcType="VARCHAR" />
+    <result column="targh" property="targh" jdbcType="VARCHAR" />
+    <result column="xtdlr" property="xtdlr" jdbcType="VARCHAR" />
+    <result column="tarszdw" property="tarszdw" jdbcType="VARCHAR" />
+    <result column="tarlxfs" property="tarlxfs" jdbcType="VARCHAR" />
+    <result column="tarznsx" property="tarznsx" jdbcType="INTEGER" />
+    <result column="tamc" property="tamc" jdbcType="VARCHAR" />
+    <result column="gsqxzms" property="gsqxzms" jdbcType="VARCHAR" />
+    <result column="tafjzc" property="tafjzc" jdbcType="VARCHAR" />
+    <result column="gsyj" property="gsyj" jdbcType="VARCHAR" />
+    <result column="gshyjxg" property="gshyjxg" jdbcType="VARCHAR" />
+    <result column="talx" property="talx" jdbcType="INTEGER" />
+    <result column="csyjxz" property="csyjxz" jdbcType="INTEGER" />
+    <result column="lsyjxz" property="lsyjxz" jdbcType="INTEGER" />
+    <result column="zplsdw" property="zplsdw" jdbcType="INTEGER" />
+    <result column="zpbdwlsr" property="zpbdwlsr" jdbcType="INTEGER" />
+    <result column="zsyjxz" property="zsyjxz" jdbcType="INTEGER" />
+    <result column="bcnyy" property="bcnyy" jdbcType="VARCHAR" />
+    <result column="sjlsrxm" property="sjlsrxm" jdbcType="VARCHAR" />
+    <result column="sjlsrgh" property="sjlsrgh" jdbcType="VARCHAR" />
+    <result column="lsrlxfs" property="lsrlxfs" jdbcType="VARCHAR" />
+    <result column="lsrjdyj" property="lsrjdyj" jdbcType="INTEGER" />
+    <result column="yjlssj" property="yjlssj" jdbcType="CHAR" />
+    <result column="bklsyy" property="bklsyy" jdbcType="VARCHAR" />
+    <result column="sjlssj" property="sjlssj" jdbcType="CHAR" />
+    <result column="yxxyms" property="yxxyms" jdbcType="VARCHAR" />
+    <result column="lsyjfj" property="lsyjfj" jdbcType="VARCHAR" />
+    <result column="wxxyms" property="wxxyms" jdbcType="VARCHAR" />
+    <result column="tgcxdms" property="tgcxdms" jdbcType="VARCHAR" />
+    <result column="lsyxxxz" property="lsyxxxz" jdbcType="INTEGER" />
+    <result column="pdf1" property="pdf1" jdbcType="INTEGER" />
+    <result column="pdf2" property="pdf2" jdbcType="INTEGER" />
+    <result column="pdf3" property="pdf3" jdbcType="INTEGER" />
+    <result column="spyj1" property="spyj1" jdbcType="INTEGER" />
+    <result column="lsjy" property="lsjy" jdbcType="VARCHAR" />
+    <result column="fyyj" property="fyyj" jdbcType="INTEGER" />
+    <result column="spyj2" property="spyj2" jdbcType="INTEGER" />
+    <result column="fujian" property="fujian" jdbcType="VARCHAR" />
+    <result column="wdwzp" property="wdwzp" jdbcType="INTEGER" />
+    <result column="fylsdwzzp" property="fylsdwzzp" jdbcType="INTEGER" />
+    <result column="lsrzzp9" property="lsrzzp9" jdbcType="INTEGER" />
+    <result column="dlrx" property="dlrx" jdbcType="VARCHAR" />
+    <result column="SQRQ" property="sqrq" jdbcType="CHAR" />
+    <result column="csyjbz" property="csyjbz" jdbcType="VARCHAR" />
+    <result column="BANZU" property="banzu" jdbcType="VARCHAR" />
+    <result column="flag" property="flag" jdbcType="INTEGER" />
+    <result column="FTriggerFlag" property="ftriggerflag" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    requestId, tarxm, targh, xtdlr, tarszdw, tarlxfs, tarznsx, tamc, gsqxzms, tafjzc, 
+    gsyj, gshyjxg, talx, csyjxz, lsyjxz, zplsdw, zpbdwlsr, zsyjxz, bcnyy, sjlsrxm, sjlsrgh, 
+    lsrlxfs, lsrjdyj, yjlssj, bklsyy, sjlssj, yxxyms, lsyjfj, wxxyms, tgcxdms, lsyxxxz, 
+    pdf1, pdf2, pdf3, spyj1, lsjy, fyyj, spyj2, fujian, wdwzp, fylsdwzzp, lsrzzp9, dlrx, 
+    SQRQ, csyjbz, BANZU, flag, FTriggerFlag
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gree.gree_x.model.api.Workflow_115Example" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from formtable_main_115
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectMaxId" resultType="java.lang.Integer">
+  	select ISNULL((select MAX([id]) from [appdata].[dbo].[formtable_main_115]),0)
+  </select>
+  <delete id="deleteByExample" parameterType="com.gree.gree_x.model.api.Workflow_115Example" >
+    delete from formtable_main_115
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gree.gree_x.model.api.Workflow_115" >
+    insert into formtable_main_115 (requestId, tarxm, targh, 
+      xtdlr, tarszdw, tarlxfs, 
+      tarznsx, tamc, gsqxzms, 
+      tafjzc, gsyj, gshyjxg, 
+      talx, csyjxz, lsyjxz, 
+      zplsdw, zpbdwlsr, zsyjxz, 
+      bcnyy, sjlsrxm, sjlsrgh, 
+      lsrlxfs, lsrjdyj, yjlssj, 
+      bklsyy, sjlssj, yxxyms, 
+      lsyjfj, wxxyms, tgcxdms, 
+      lsyxxxz, pdf1, pdf2, 
+      pdf3, spyj1, lsjy, 
+      fyyj, spyj2, fujian, 
+      wdwzp, fylsdwzzp, lsrzzp9, 
+      dlrx, SQRQ, csyjbz, BANZU, 
+      flag, FTriggerFlag)
+    values (#{requestid,jdbcType=INTEGER}, #{tarxm,jdbcType=VARCHAR}, #{targh,jdbcType=VARCHAR}, 
+      #{xtdlr,jdbcType=VARCHAR}, #{tarszdw,jdbcType=VARCHAR}, #{tarlxfs,jdbcType=VARCHAR}, 
+      #{tarznsx,jdbcType=INTEGER}, #{tamc,jdbcType=VARCHAR}, #{gsqxzms,jdbcType=VARCHAR}, 
+      #{tafjzc,jdbcType=VARCHAR}, #{gsyj,jdbcType=VARCHAR}, #{gshyjxg,jdbcType=VARCHAR}, 
+      #{talx,jdbcType=INTEGER}, #{csyjxz,jdbcType=INTEGER}, #{lsyjxz,jdbcType=INTEGER}, 
+      #{zplsdw,jdbcType=INTEGER}, #{zpbdwlsr,jdbcType=INTEGER}, #{zsyjxz,jdbcType=INTEGER}, 
+      #{bcnyy,jdbcType=VARCHAR}, #{sjlsrxm,jdbcType=VARCHAR}, #{sjlsrgh,jdbcType=VARCHAR}, 
+      #{lsrlxfs,jdbcType=VARCHAR}, #{lsrjdyj,jdbcType=INTEGER}, #{yjlssj,jdbcType=CHAR}, 
+      #{bklsyy,jdbcType=VARCHAR}, #{sjlssj,jdbcType=CHAR}, #{yxxyms,jdbcType=VARCHAR}, 
+      #{lsyjfj,jdbcType=VARCHAR}, #{wxxyms,jdbcType=VARCHAR}, #{tgcxdms,jdbcType=VARCHAR}, 
+      #{lsyxxxz,jdbcType=INTEGER}, #{pdf1,jdbcType=INTEGER}, #{pdf2,jdbcType=INTEGER}, 
+      #{pdf3,jdbcType=INTEGER}, #{spyj1,jdbcType=INTEGER}, #{lsjy,jdbcType=VARCHAR}, 
+      #{fyyj,jdbcType=INTEGER}, #{spyj2,jdbcType=INTEGER}, #{fujian,jdbcType=VARCHAR}, 
+      #{wdwzp,jdbcType=INTEGER}, #{fylsdwzzp,jdbcType=INTEGER}, #{lsrzzp9,jdbcType=INTEGER}, 
+      #{dlrx,jdbcType=VARCHAR}, #{sqrq,jdbcType=CHAR}, #{csyjbz,jdbcType=VARCHAR}, #{banzu,jdbcType=VARCHAR}, 
+      #{flag,jdbcType=INTEGER}, #{ftriggerflag,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gree.gree_x.model.api.Workflow_115" >
+    insert into formtable_main_115
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="requestid != null" >
+        requestId,
+      </if>
+      <if test="tarxm != null" >
+        tarxm,
+      </if>
+      <if test="targh != null" >
+        targh,
+      </if>
+      <if test="xtdlr != null" >
+        xtdlr,
+      </if>
+      <if test="tarszdw != null" >
+        tarszdw,
+      </if>
+      <if test="tarlxfs != null" >
+        tarlxfs,
+      </if>
+      <if test="tarznsx != null" >
+        tarznsx,
+      </if>
+      <if test="tamc != null" >
+        tamc,
+      </if>
+      <if test="gsqxzms != null" >
+        gsqxzms,
+      </if>
+      <if test="tafjzc != null" >
+        tafjzc,
+      </if>
+      <if test="gsyj != null" >
+        gsyj,
+      </if>
+      <if test="gshyjxg != null" >
+        gshyjxg,
+      </if>
+      <if test="talx != null" >
+        talx,
+      </if>
+      <if test="csyjxz != null" >
+        csyjxz,
+      </if>
+      <if test="lsyjxz != null" >
+        lsyjxz,
+      </if>
+      <if test="zplsdw != null" >
+        zplsdw,
+      </if>
+      <if test="zpbdwlsr != null" >
+        zpbdwlsr,
+      </if>
+      <if test="zsyjxz != null" >
+        zsyjxz,
+      </if>
+      <if test="bcnyy != null" >
+        bcnyy,
+      </if>
+      <if test="sjlsrxm != null" >
+        sjlsrxm,
+      </if>
+      <if test="sjlsrgh != null" >
+        sjlsrgh,
+      </if>
+      <if test="lsrlxfs != null" >
+        lsrlxfs,
+      </if>
+      <if test="lsrjdyj != null" >
+        lsrjdyj,
+      </if>
+      <if test="yjlssj != null" >
+        yjlssj,
+      </if>
+      <if test="bklsyy != null" >
+        bklsyy,
+      </if>
+      <if test="sjlssj != null" >
+        sjlssj,
+      </if>
+      <if test="yxxyms != null" >
+        yxxyms,
+      </if>
+      <if test="lsyjfj != null" >
+        lsyjfj,
+      </if>
+      <if test="wxxyms != null" >
+        wxxyms,
+      </if>
+      <if test="tgcxdms != null" >
+        tgcxdms,
+      </if>
+      <if test="lsyxxxz != null" >
+        lsyxxxz,
+      </if>
+      <if test="pdf1 != null" >
+        pdf1,
+      </if>
+      <if test="pdf2 != null" >
+        pdf2,
+      </if>
+      <if test="pdf3 != null" >
+        pdf3,
+      </if>
+      <if test="spyj1 != null" >
+        spyj1,
+      </if>
+      <if test="lsjy != null" >
+        lsjy,
+      </if>
+      <if test="fyyj != null" >
+        fyyj,
+      </if>
+      <if test="spyj2 != null" >
+        spyj2,
+      </if>
+      <if test="fujian != null" >
+        fujian,
+      </if>
+      <if test="wdwzp != null" >
+        wdwzp,
+      </if>
+      <if test="fylsdwzzp != null" >
+        fylsdwzzp,
+      </if>
+      <if test="lsrzzp9 != null" >
+        lsrzzp9,
+      </if>
+      <if test="dlrx != null" >
+        dlrx,
+      </if>
+      <if test="sqrq != null" >
+        SQRQ,
+      </if>
+      <if test="csyjbz != null" >
+        csyjbz,
+      </if>
+      <if test="banzu != null" >
+        BANZU,
+      </if>
+      <if test="flag != null" >
+        flag,
+      </if>
+      <if test="ftriggerflag != null" >
+        FTriggerFlag,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="requestid != null" >
+        #{requestid,jdbcType=INTEGER},
+      </if>
+      <if test="tarxm != null" >
+        #{tarxm,jdbcType=VARCHAR},
+      </if>
+      <if test="targh != null" >
+        #{targh,jdbcType=VARCHAR},
+      </if>
+      <if test="xtdlr != null" >
+        #{xtdlr,jdbcType=VARCHAR},
+      </if>
+      <if test="tarszdw != null" >
+        #{tarszdw,jdbcType=VARCHAR},
+      </if>
+      <if test="tarlxfs != null" >
+        #{tarlxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="tarznsx != null" >
+        #{tarznsx,jdbcType=INTEGER},
+      </if>
+      <if test="tamc != null" >
+        #{tamc,jdbcType=VARCHAR},
+      </if>
+      <if test="gsqxzms != null" >
+        #{gsqxzms,jdbcType=VARCHAR},
+      </if>
+      <if test="tafjzc != null" >
+        #{tafjzc,jdbcType=VARCHAR},
+      </if>
+      <if test="gsyj != null" >
+        #{gsyj,jdbcType=VARCHAR},
+      </if>
+      <if test="gshyjxg != null" >
+        #{gshyjxg,jdbcType=VARCHAR},
+      </if>
+      <if test="talx != null" >
+        #{talx,jdbcType=INTEGER},
+      </if>
+      <if test="csyjxz != null" >
+        #{csyjxz,jdbcType=INTEGER},
+      </if>
+      <if test="lsyjxz != null" >
+        #{lsyjxz,jdbcType=INTEGER},
+      </if>
+      <if test="zplsdw != null" >
+        #{zplsdw,jdbcType=INTEGER},
+      </if>
+      <if test="zpbdwlsr != null" >
+        #{zpbdwlsr,jdbcType=INTEGER},
+      </if>
+      <if test="zsyjxz != null" >
+        #{zsyjxz,jdbcType=INTEGER},
+      </if>
+      <if test="bcnyy != null" >
+        #{bcnyy,jdbcType=VARCHAR},
+      </if>
+      <if test="sjlsrxm != null" >
+        #{sjlsrxm,jdbcType=VARCHAR},
+      </if>
+      <if test="sjlsrgh != null" >
+        #{sjlsrgh,jdbcType=VARCHAR},
+      </if>
+      <if test="lsrlxfs != null" >
+        #{lsrlxfs,jdbcType=VARCHAR},
+      </if>
+      <if test="lsrjdyj != null" >
+        #{lsrjdyj,jdbcType=INTEGER},
+      </if>
+      <if test="yjlssj != null" >
+        #{yjlssj,jdbcType=CHAR},
+      </if>
+      <if test="bklsyy != null" >
+        #{bklsyy,jdbcType=VARCHAR},
+      </if>
+      <if test="sjlssj != null" >
+        #{sjlssj,jdbcType=CHAR},
+      </if>
+      <if test="yxxyms != null" >
+        #{yxxyms,jdbcType=VARCHAR},
+      </if>
+      <if test="lsyjfj != null" >
+        #{lsyjfj,jdbcType=VARCHAR},
+      </if>
+      <if test="wxxyms != null" >
+        #{wxxyms,jdbcType=VARCHAR},
+      </if>
+      <if test="tgcxdms != null" >
+        #{tgcxdms,jdbcType=VARCHAR},
+      </if>
+      <if test="lsyxxxz != null" >
+        #{lsyxxxz,jdbcType=INTEGER},
+      </if>
+      <if test="pdf1 != null" >
+        #{pdf1,jdbcType=INTEGER},
+      </if>
+      <if test="pdf2 != null" >
+        #{pdf2,jdbcType=INTEGER},
+      </if>
+      <if test="pdf3 != null" >
+        #{pdf3,jdbcType=INTEGER},
+      </if>
+      <if test="spyj1 != null" >
+        #{spyj1,jdbcType=INTEGER},
+      </if>
+      <if test="lsjy != null" >
+        #{lsjy,jdbcType=VARCHAR},
+      </if>
+      <if test="fyyj != null" >
+        #{fyyj,jdbcType=INTEGER},
+      </if>
+      <if test="spyj2 != null" >
+        #{spyj2,jdbcType=INTEGER},
+      </if>
+      <if test="fujian != null" >
+        #{fujian,jdbcType=VARCHAR},
+      </if>
+      <if test="wdwzp != null" >
+        #{wdwzp,jdbcType=INTEGER},
+      </if>
+      <if test="fylsdwzzp != null" >
+        #{fylsdwzzp,jdbcType=INTEGER},
+      </if>
+      <if test="lsrzzp9 != null" >
+        #{lsrzzp9,jdbcType=INTEGER},
+      </if>
+      <if test="dlrx != null" >
+        #{dlrx,jdbcType=VARCHAR},
+      </if>
+      <if test="sqrq != null" >
+        #{sqrq,jdbcType=CHAR},
+      </if>
+      <if test="csyjbz != null" >
+        #{csyjbz,jdbcType=VARCHAR},
+      </if>
+      <if test="banzu != null" >
+        #{banzu,jdbcType=VARCHAR},
+      </if>
+      <if test="flag != null" >
+        #{flag,jdbcType=INTEGER},
+      </if>
+      <if test="ftriggerflag != null" >
+        #{ftriggerflag,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gree.gree_x.model.api.Workflow_115Example" resultType="java.lang.Integer" >
+    select count(*) from formtable_main_115
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

@@ -1,0 +1,381 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gree.gree_x.dao.api.KaoqinMapper" >
+  <resultMap id="BaseResultMap" type="com.gree.gree_x.model.api.Kaoqin" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="dept" property="dept" jdbcType="VARCHAR" />
+    <result column="team" property="team" jdbcType="VARCHAR" />
+    <result column="workcode" property="workcode" jdbcType="VARCHAR" />
+    <result column="realname" property="realname" jdbcType="VARCHAR" />
+    <result column="ycqts" property="ycqts" jdbcType="DOUBLE" />
+    <result column="gzrcqts" property="gzrcqts" jdbcType="DOUBLE" />
+    <result column="sjcqts" property="sjcqts" jdbcType="DOUBLE" />
+    <result column="schjts" property="schjts" jdbcType="DOUBLE" />
+    <result column="ycqzxss" property="ycqzxss" jdbcType="DOUBLE" />
+    <result column="prjbxs" property="prjbxs" jdbcType="DOUBLE" />
+    <result column="jiarjbxs" property="jiarjbxs" jdbcType="DOUBLE" />
+    <result column="jierjbxs" property="jierjbxs" jdbcType="DOUBLE" />
+    <result column="jjrsbts" property="jjrsbts" jdbcType="DOUBLE" />
+    <result column="gspxts" property="gspxts" jdbcType="DOUBLE" />
+    <result column="fcpxts" property="fcpxts" jdbcType="DOUBLE" />
+    <result column="cbts" property="cbts" jdbcType="DOUBLE" />
+    <result column="nxjts" property="nxjts" jdbcType="DOUBLE" />
+    <result column="bjts" property="bjts" jdbcType="DOUBLE" />
+    <result column="sjts" property="sjts" jdbcType="DOUBLE" />
+    <result column="cjts" property="cjts" jdbcType="DOUBLE" />
+    <result column="jhsyjts" property="jhsyjts" jdbcType="DOUBLE" />
+    <result column="gsjts" property="gsjts" jdbcType="DOUBLE" />
+    <result column="hjts" property="hjts" jdbcType="DOUBLE" />
+    <result column="sangjts" property="sangjts" jdbcType="DOUBLE" />
+    <result column="brjts" property="brjts" jdbcType="DOUBLE" />
+    <result column="kgts" property="kgts" jdbcType="DOUBLE" />
+    <result column="bxts" property="bxts" jdbcType="DOUBLE" />
+    <result column="ytxts" property="ytxts" jdbcType="DOUBLE" />
+    <result column="ccts" property="ccts" jdbcType="DOUBLE" />
+    <result column="bbts" property="bbts" jdbcType="DOUBLE" />
+    <result column="zbts" property="zbts" jdbcType="DOUBLE" />
+    <result column="wbts" property="wbts" jdbcType="DOUBLE" />
+    <result column="nxjjyts" property="nxjjyts" jdbcType="DOUBLE" />
+    <result column="jblxxs" property="jblxxs" jdbcType="DOUBLE" />
+    <result column="wjrgsts" property="wjrgsts" jdbcType="DOUBLE" />
+    <result column="lxts" property="lxts" jdbcType="DOUBLE" />
+    <result column="gxts" property="gxts" jdbcType="DOUBLE" />
+    <result column="hj" property="hj" jdbcType="DOUBLE" />
+    <result column="isconfirm" property="isconfirm" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, dept, team, workcode, realname, ycqts, gzrcqts, sjcqts, schjts, ycqzxss, prjbxs, 
+    jiarjbxs, jierjbxs, jjrsbts, gspxts, fcpxts, cbts, nxjts, bjts, sjts, cjts, jhsyjts, 
+    gsjts, hjts, sangjts, brjts, kgts, bxts, ytxts, ccts, bbts, zbts, wbts, nxjjyts, 
+    jblxxs, wjrgsts, lxts, gxts, hj, isconfirm
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gree.gree_x.model.api.KaoqinExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from kaoqin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.gree.gree_x.model.api.KaoqinExample" >
+    delete from kaoqin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gree.gree_x.model.api.Kaoqin" >
+    insert into kaoqin (id, dept, team, 
+      workcode, realname, ycqts, 
+      gzrcqts, sjcqts, schjts, 
+      ycqzxss, prjbxs, jiarjbxs, 
+      jierjbxs, jjrsbts, gspxts, 
+      fcpxts, cbts, nxjts, bjts, 
+      sjts, cjts, jhsyjts, gsjts, 
+      hjts, sangjts, brjts, 
+      kgts, bxts, ytxts, ccts, 
+      bbts, zbts, wbts, nxjjyts, 
+      jblxxs, wjrgsts, lxts, 
+      gxts, hj, isconfirm)
+    values (#{id,jdbcType=INTEGER}, #{dept,jdbcType=VARCHAR}, #{team,jdbcType=VARCHAR}, 
+      #{workcode,jdbcType=VARCHAR}, #{realname,jdbcType=VARCHAR}, #{ycqts,jdbcType=DOUBLE}, 
+      #{gzrcqts,jdbcType=DOUBLE}, #{sjcqts,jdbcType=DOUBLE}, #{schjts,jdbcType=DOUBLE}, 
+      #{ycqzxss,jdbcType=DOUBLE}, #{prjbxs,jdbcType=DOUBLE}, #{jiarjbxs,jdbcType=DOUBLE}, 
+      #{jierjbxs,jdbcType=DOUBLE}, #{jjrsbts,jdbcType=DOUBLE}, #{gspxts,jdbcType=DOUBLE}, 
+      #{fcpxts,jdbcType=DOUBLE}, #{cbts,jdbcType=DOUBLE}, #{nxjts,jdbcType=DOUBLE}, #{bjts,jdbcType=DOUBLE}, 
+      #{sjts,jdbcType=DOUBLE}, #{cjts,jdbcType=DOUBLE}, #{jhsyjts,jdbcType=DOUBLE}, #{gsjts,jdbcType=DOUBLE}, 
+      #{hjts,jdbcType=DOUBLE}, #{sangjts,jdbcType=DOUBLE}, #{brjts,jdbcType=DOUBLE}, 
+      #{kgts,jdbcType=DOUBLE}, #{bxts,jdbcType=DOUBLE}, #{ytxts,jdbcType=DOUBLE}, #{ccts,jdbcType=DOUBLE}, 
+      #{bbts,jdbcType=DOUBLE}, #{zbts,jdbcType=DOUBLE}, #{wbts,jdbcType=DOUBLE}, #{nxjjyts,jdbcType=DOUBLE}, 
+      #{jblxxs,jdbcType=DOUBLE}, #{wjrgsts,jdbcType=DOUBLE}, #{lxts,jdbcType=DOUBLE}, 
+      #{gxts,jdbcType=DOUBLE}, #{hj,jdbcType=DOUBLE}, #{isconfirm,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gree.gree_x.model.api.Kaoqin" >
+    insert into kaoqin
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="dept != null" >
+        dept,
+      </if>
+      <if test="team != null" >
+        team,
+      </if>
+      <if test="workcode != null" >
+        workcode,
+      </if>
+      <if test="realname != null" >
+        realname,
+      </if>
+      <if test="ycqts != null" >
+        ycqts,
+      </if>
+      <if test="gzrcqts != null" >
+        gzrcqts,
+      </if>
+      <if test="sjcqts != null" >
+        sjcqts,
+      </if>
+      <if test="schjts != null" >
+        schjts,
+      </if>
+      <if test="ycqzxss != null" >
+        ycqzxss,
+      </if>
+      <if test="prjbxs != null" >
+        prjbxs,
+      </if>
+      <if test="jiarjbxs != null" >
+        jiarjbxs,
+      </if>
+      <if test="jierjbxs != null" >
+        jierjbxs,
+      </if>
+      <if test="jjrsbts != null" >
+        jjrsbts,
+      </if>
+      <if test="gspxts != null" >
+        gspxts,
+      </if>
+      <if test="fcpxts != null" >
+        fcpxts,
+      </if>
+      <if test="cbts != null" >
+        cbts,
+      </if>
+      <if test="nxjts != null" >
+        nxjts,
+      </if>
+      <if test="bjts != null" >
+        bjts,
+      </if>
+      <if test="sjts != null" >
+        sjts,
+      </if>
+      <if test="cjts != null" >
+        cjts,
+      </if>
+      <if test="jhsyjts != null" >
+        jhsyjts,
+      </if>
+      <if test="gsjts != null" >
+        gsjts,
+      </if>
+      <if test="hjts != null" >
+        hjts,
+      </if>
+      <if test="sangjts != null" >
+        sangjts,
+      </if>
+      <if test="brjts != null" >
+        brjts,
+      </if>
+      <if test="kgts != null" >
+        kgts,
+      </if>
+      <if test="bxts != null" >
+        bxts,
+      </if>
+      <if test="ytxts != null" >
+        ytxts,
+      </if>
+      <if test="ccts != null" >
+        ccts,
+      </if>
+      <if test="bbts != null" >
+        bbts,
+      </if>
+      <if test="zbts != null" >
+        zbts,
+      </if>
+      <if test="wbts != null" >
+        wbts,
+      </if>
+      <if test="nxjjyts != null" >
+        nxjjyts,
+      </if>
+      <if test="jblxxs != null" >
+        jblxxs,
+      </if>
+      <if test="wjrgsts != null" >
+        wjrgsts,
+      </if>
+      <if test="lxts != null" >
+        lxts,
+      </if>
+      <if test="gxts != null" >
+        gxts,
+      </if>
+      <if test="hj != null" >
+        hj,
+      </if>
+      <if test="isconfirm != null" >
+        isconfirm,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="dept != null" >
+        #{dept,jdbcType=VARCHAR},
+      </if>
+      <if test="team != null" >
+        #{team,jdbcType=VARCHAR},
+      </if>
+      <if test="workcode != null" >
+        #{workcode,jdbcType=VARCHAR},
+      </if>
+      <if test="realname != null" >
+        #{realname,jdbcType=VARCHAR},
+      </if>
+      <if test="ycqts != null" >
+        #{ycqts,jdbcType=DOUBLE},
+      </if>
+      <if test="gzrcqts != null" >
+        #{gzrcqts,jdbcType=DOUBLE},
+      </if>
+      <if test="sjcqts != null" >
+        #{sjcqts,jdbcType=DOUBLE},
+      </if>
+      <if test="schjts != null" >
+        #{schjts,jdbcType=DOUBLE},
+      </if>
+      <if test="ycqzxss != null" >
+        #{ycqzxss,jdbcType=DOUBLE},
+      </if>
+      <if test="prjbxs != null" >
+        #{prjbxs,jdbcType=DOUBLE},
+      </if>
+      <if test="jiarjbxs != null" >
+        #{jiarjbxs,jdbcType=DOUBLE},
+      </if>
+      <if test="jierjbxs != null" >
+        #{jierjbxs,jdbcType=DOUBLE},
+      </if>
+      <if test="jjrsbts != null" >
+        #{jjrsbts,jdbcType=DOUBLE},
+      </if>
+      <if test="gspxts != null" >
+        #{gspxts,jdbcType=DOUBLE},
+      </if>
+      <if test="fcpxts != null" >
+        #{fcpxts,jdbcType=DOUBLE},
+      </if>
+      <if test="cbts != null" >
+        #{cbts,jdbcType=DOUBLE},
+      </if>
+      <if test="nxjts != null" >
+        #{nxjts,jdbcType=DOUBLE},
+      </if>
+      <if test="bjts != null" >
+        #{bjts,jdbcType=DOUBLE},
+      </if>
+      <if test="sjts != null" >
+        #{sjts,jdbcType=DOUBLE},
+      </if>
+      <if test="cjts != null" >
+        #{cjts,jdbcType=DOUBLE},
+      </if>
+      <if test="jhsyjts != null" >
+        #{jhsyjts,jdbcType=DOUBLE},
+      </if>
+      <if test="gsjts != null" >
+        #{gsjts,jdbcType=DOUBLE},
+      </if>
+      <if test="hjts != null" >
+        #{hjts,jdbcType=DOUBLE},
+      </if>
+      <if test="sangjts != null" >
+        #{sangjts,jdbcType=DOUBLE},
+      </if>
+      <if test="brjts != null" >
+        #{brjts,jdbcType=DOUBLE},
+      </if>
+      <if test="kgts != null" >
+        #{kgts,jdbcType=DOUBLE},
+      </if>
+      <if test="bxts != null" >
+        #{bxts,jdbcType=DOUBLE},
+      </if>
+      <if test="ytxts != null" >
+        #{ytxts,jdbcType=DOUBLE},
+      </if>
+      <if test="ccts != null" >
+        #{ccts,jdbcType=DOUBLE},
+      </if>
+      <if test="bbts != null" >
+        #{bbts,jdbcType=DOUBLE},
+      </if>
+      <if test="zbts != null" >
+        #{zbts,jdbcType=DOUBLE},
+      </if>
+      <if test="wbts != null" >
+        #{wbts,jdbcType=DOUBLE},
+      </if>
+      <if test="nxjjyts != null" >
+        #{nxjjyts,jdbcType=DOUBLE},
+      </if>
+      <if test="jblxxs != null" >
+        #{jblxxs,jdbcType=DOUBLE},
+      </if>
+      <if test="wjrgsts != null" >
+        #{wjrgsts,jdbcType=DOUBLE},
+      </if>
+      <if test="lxts != null" >
+        #{lxts,jdbcType=DOUBLE},
+      </if>
+      <if test="gxts != null" >
+        #{gxts,jdbcType=DOUBLE},
+      </if>
+      <if test="hj != null" >
+        #{hj,jdbcType=DOUBLE},
+      </if>
+      <if test="isconfirm != null" >
+        #{isconfirm,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gree.gree_x.model.api.KaoqinExample" resultType="java.lang.Integer" >
+    select count(*) from kaoqin
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

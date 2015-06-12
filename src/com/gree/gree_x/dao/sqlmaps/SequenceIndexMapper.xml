@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gree.gree_x.dao.SequenceIndexMapper" >
+  <resultMap id="BaseResultMap" type="com.gree.gree_x.model.SequenceIndex" >
+    <result column="indexdesc" property="indexdesc" jdbcType="VARCHAR" />
+    <result column="currentid" property="currentid" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    indexdesc, currentid
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gree.gree_x.model.SequenceIndexExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from SequenceIndex
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.gree.gree_x.model.SequenceIndexExample" >
+    delete from SequenceIndex
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gree.gree_x.model.SequenceIndex" >
+    insert into SequenceIndex (indexdesc, currentid)
+    values (#{indexdesc,jdbcType=VARCHAR}, #{currentid,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gree.gree_x.model.SequenceIndex" >
+    insert into SequenceIndex
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="indexdesc != null" >
+        indexdesc,
+      </if>
+      <if test="currentid != null" >
+        currentid,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="indexdesc != null" >
+        #{indexdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="currentid != null" >
+        #{currentid,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gree.gree_x.model.SequenceIndexExample" resultType="java.lang.Integer" >
+    select count(*) from SequenceIndex
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update SequenceIndex
+    <set >
+      <if test="record.indexdesc != null" >
+        indexdesc = #{record.indexdesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.currentid != null" >
+        currentid = #{record.currentid,jdbcType=INTEGER},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update SequenceIndex
+    set indexdesc = #{record.indexdesc,jdbcType=VARCHAR},
+      currentid = #{record.currentid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

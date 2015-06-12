@@ -1,0 +1,455 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gree.gree_x.dao.ehrsoft.HrUserMapper" >
+  <resultMap id="BaseResultMap" type="com.gree.gree_x.model.ehrsoft.HrUser" >
+    <id column="A0100" property="a0100" jdbcType="VARCHAR" />
+    <result column="A0000" property="a0000" jdbcType="DECIMAL" />
+    <result column="B0110" property="b0110" jdbcType="VARCHAR" />
+    <result column="A0111" property="a0111" jdbcType="TIMESTAMP" />
+    <result column="A0107" property="a0107" jdbcType="VARCHAR" />
+    <result column="A0177" property="a0177" jdbcType="VARCHAR" />
+    <result column="A0121" property="a0121" jdbcType="VARCHAR" />
+    <result column="E0127" property="e0127" jdbcType="VARCHAR" />
+    <result column="STATE" property="state" jdbcType="VARCHAR" />
+    <result column="C0101" property="c0101" jdbcType="DECIMAL" />
+    <result column="E01A1" property="e01a1" jdbcType="VARCHAR" />
+    <result column="CREATETIME" property="createtime" jdbcType="TIMESTAMP" />
+    <result column="MODTIME" property="modtime" jdbcType="TIMESTAMP" />
+    <result column="CREATEUSERNAME" property="createusername" jdbcType="VARCHAR" />
+    <result column="MODUSERNAME" property="modusername" jdbcType="VARCHAR" />
+    <result column="USERNAME" property="username" jdbcType="VARCHAR" />
+    <result column="USERPASSWORD" property="userpassword" jdbcType="VARCHAR" />
+    <result column="GROUPS" property="groups" jdbcType="VARCHAR" />
+    <result column="C0183" property="c0183" jdbcType="TIMESTAMP" />
+    <result column="C0181" property="c0181" jdbcType="VARCHAR" />
+    <result column="MODTIME1" property="modtime1" jdbcType="TIMESTAMP" />
+    <result column="E0122" property="e0122" jdbcType="VARCHAR" />
+    <result column="A0101" property="a0101" jdbcType="VARCHAR" />
+    <result column="C0104" property="c0104" jdbcType="VARCHAR" />
+    <result column="C010A" property="c010a" jdbcType="VARCHAR" />
+    <result column="C01UI" property="c01ui" jdbcType="VARCHAR" />
+    <result column="C0109" property="c0109" jdbcType="VARCHAR" />
+    <result column="C01UT" property="c01ut" jdbcType="VARCHAR" />
+    <result column="E0104" property="e0104" jdbcType="VARCHAR" />
+    <result column="A0174" property="a0174" jdbcType="VARCHAR" />
+    <result column="E0126" property="e0126" jdbcType="VARCHAR" />
+    <result column="C01UY" property="c01uy" jdbcType="VARCHAR" />
+    <result column="C01UZ" property="c01uz" jdbcType="VARCHAR" />
+    <result column="C01UW" property="c01uw" jdbcType="TIMESTAMP" />
+    <result column="C01UX" property="c01ux" jdbcType="VARCHAR" />
+    <result column="A01Z0" property="a01z0" jdbcType="VARCHAR" />
+    <result column="C01V1" property="c01v1" jdbcType="VARCHAR" />
+    <result column="C01V2" property="c01v2" jdbcType="TIMESTAMP" />
+    <result column="C01V4" property="c01v4" jdbcType="VARCHAR" />
+    <result column="C01V6" property="c01v6" jdbcType="DECIMAL" />
+    <result column="C01V7" property="c01v7" jdbcType="VARCHAR" />
+    <result column="C01VB" property="c01vb" jdbcType="VARCHAR" />
+    <result column="C01V5" property="c01v5" jdbcType="VARCHAR" />
+    <result column="C01VC" property="c01vc" jdbcType="VARCHAR" />
+    <result column="GUIDKEY" property="guidkey" jdbcType="VARCHAR" />
+    <result column="C01US" property="c01us" jdbcType="VARCHAR" />
+    <result column="C01VD" property="c01vd" jdbcType="VARCHAR" />
+    <result column="C01UM" property="c01um" jdbcType="VARCHAR" />
+    <result column="C01VE" property="c01ve" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    A0100, A0000, B0110, A0111, A0107, A0177, A0121, E0127, STATE, C0101, E01A1, CREATETIME, 
+    MODTIME, CREATEUSERNAME, MODUSERNAME, USERNAME, USERPASSWORD, GROUPS, C0183, C0181, 
+    MODTIME1, E0122, A0101, C0104, C010A, C01UI, C0109, C01UT, E0104, A0174, E0126, C01UY, 
+    C01UZ, C01UW, C01UX, A01Z0, C01V1, C01V2, C01V4, C01V6, C01V7, C01VB, C01V5, C01VC, 
+    GUIDKEY, C01US, C01VD, C01UM, C01VE
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gree.gree_x.model.ehrsoft.HrUserExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    'false' as QUERYID,
+    <include refid="Base_Column_List" />
+    from EHRSOFT.USRA01
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.gree.gree_x.model.ehrsoft.HrUserExample" >
+    delete from EHRSOFT.USRA01
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gree.gree_x.model.ehrsoft.HrUser" >
+    insert into EHRSOFT.USRA01 (A0100, A0000, B0110, 
+      A0111, A0107, A0177, 
+      A0121, E0127, STATE, 
+      C0101, E01A1, CREATETIME, 
+      MODTIME, CREATEUSERNAME, MODUSERNAME, 
+      USERNAME, USERPASSWORD, GROUPS, 
+      C0183, C0181, MODTIME1, 
+      E0122, A0101, C0104, 
+      C010A, C01UI, C0109, 
+      C01UT, E0104, A0174, 
+      E0126, C01UY, C01UZ, 
+      C01UW, C01UX, A01Z0, 
+      C01V1, C01V2, C01V4, 
+      C01V6, C01V7, C01VB, 
+      C01V5, C01VC, GUIDKEY, 
+      C01US, C01VD, C01UM, 
+      C01VE)
+    values (#{a0100,jdbcType=VARCHAR}, #{a0000,jdbcType=DECIMAL}, #{b0110,jdbcType=VARCHAR}, 
+      #{a0111,jdbcType=TIMESTAMP}, #{a0107,jdbcType=VARCHAR}, #{a0177,jdbcType=VARCHAR}, 
+      #{a0121,jdbcType=VARCHAR}, #{e0127,jdbcType=VARCHAR}, #{state,jdbcType=VARCHAR}, 
+      #{c0101,jdbcType=DECIMAL}, #{e01a1,jdbcType=VARCHAR}, #{createtime,jdbcType=TIMESTAMP}, 
+      #{modtime,jdbcType=TIMESTAMP}, #{createusername,jdbcType=VARCHAR}, #{modusername,jdbcType=VARCHAR}, 
+      #{username,jdbcType=VARCHAR}, #{userpassword,jdbcType=VARCHAR}, #{groups,jdbcType=VARCHAR}, 
+      #{c0183,jdbcType=TIMESTAMP}, #{c0181,jdbcType=VARCHAR}, #{modtime1,jdbcType=TIMESTAMP}, 
+      #{e0122,jdbcType=VARCHAR}, #{a0101,jdbcType=VARCHAR}, #{c0104,jdbcType=VARCHAR}, 
+      #{c010a,jdbcType=VARCHAR}, #{c01ui,jdbcType=VARCHAR}, #{c0109,jdbcType=VARCHAR}, 
+      #{c01ut,jdbcType=VARCHAR}, #{e0104,jdbcType=VARCHAR}, #{a0174,jdbcType=VARCHAR}, 
+      #{e0126,jdbcType=VARCHAR}, #{c01uy,jdbcType=VARCHAR}, #{c01uz,jdbcType=VARCHAR}, 
+      #{c01uw,jdbcType=TIMESTAMP}, #{c01ux,jdbcType=VARCHAR}, #{a01z0,jdbcType=VARCHAR}, 
+      #{c01v1,jdbcType=VARCHAR}, #{c01v2,jdbcType=TIMESTAMP}, #{c01v4,jdbcType=VARCHAR}, 
+      #{c01v6,jdbcType=DECIMAL}, #{c01v7,jdbcType=VARCHAR}, #{c01vb,jdbcType=VARCHAR}, 
+      #{c01v5,jdbcType=VARCHAR}, #{c01vc,jdbcType=VARCHAR}, #{guidkey,jdbcType=VARCHAR}, 
+      #{c01us,jdbcType=VARCHAR}, #{c01vd,jdbcType=VARCHAR}, #{c01um,jdbcType=VARCHAR}, 
+      #{c01ve,jdbcType=VARCHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gree.gree_x.model.ehrsoft.HrUser" >
+    insert into EHRSOFT.USRA01
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="a0100 != null" >
+        A0100,
+      </if>
+      <if test="a0000 != null" >
+        A0000,
+      </if>
+      <if test="b0110 != null" >
+        B0110,
+      </if>
+      <if test="a0111 != null" >
+        A0111,
+      </if>
+      <if test="a0107 != null" >
+        A0107,
+      </if>
+      <if test="a0177 != null" >
+        A0177,
+      </if>
+      <if test="a0121 != null" >
+        A0121,
+      </if>
+      <if test="e0127 != null" >
+        E0127,
+      </if>
+      <if test="state != null" >
+        STATE,
+      </if>
+      <if test="c0101 != null" >
+        C0101,
+      </if>
+      <if test="e01a1 != null" >
+        E01A1,
+      </if>
+      <if test="createtime != null" >
+        CREATETIME,
+      </if>
+      <if test="modtime != null" >
+        MODTIME,
+      </if>
+      <if test="createusername != null" >
+        CREATEUSERNAME,
+      </if>
+      <if test="modusername != null" >
+        MODUSERNAME,
+      </if>
+      <if test="username != null" >
+        USERNAME,
+      </if>
+      <if test="userpassword != null" >
+        USERPASSWORD,
+      </if>
+      <if test="groups != null" >
+        GROUPS,
+      </if>
+      <if test="c0183 != null" >
+        C0183,
+      </if>
+      <if test="c0181 != null" >
+        C0181,
+      </if>
+      <if test="modtime1 != null" >
+        MODTIME1,
+      </if>
+      <if test="e0122 != null" >
+        E0122,
+      </if>
+      <if test="a0101 != null" >
+        A0101,
+      </if>
+      <if test="c0104 != null" >
+        C0104,
+      </if>
+      <if test="c010a != null" >
+        C010A,
+      </if>
+      <if test="c01ui != null" >
+        C01UI,
+      </if>
+      <if test="c0109 != null" >
+        C0109,
+      </if>
+      <if test="c01ut != null" >
+        C01UT,
+      </if>
+      <if test="e0104 != null" >
+        E0104,
+      </if>
+      <if test="a0174 != null" >
+        A0174,
+      </if>
+      <if test="e0126 != null" >
+        E0126,
+      </if>
+      <if test="c01uy != null" >
+        C01UY,
+      </if>
+      <if test="c01uz != null" >
+        C01UZ,
+      </if>
+      <if test="c01uw != null" >
+        C01UW,
+      </if>
+      <if test="c01ux != null" >
+        C01UX,
+      </if>
+      <if test="a01z0 != null" >
+        A01Z0,
+      </if>
+      <if test="c01v1 != null" >
+        C01V1,
+      </if>
+      <if test="c01v2 != null" >
+        C01V2,
+      </if>
+      <if test="c01v4 != null" >
+        C01V4,
+      </if>
+      <if test="c01v6 != null" >
+        C01V6,
+      </if>
+      <if test="c01v7 != null" >
+        C01V7,
+      </if>
+      <if test="c01vb != null" >
+        C01VB,
+      </if>
+      <if test="c01v5 != null" >
+        C01V5,
+      </if>
+      <if test="c01vc != null" >
+        C01VC,
+      </if>
+      <if test="guidkey != null" >
+        GUIDKEY,
+      </if>
+      <if test="c01us != null" >
+        C01US,
+      </if>
+      <if test="c01vd != null" >
+        C01VD,
+      </if>
+      <if test="c01um != null" >
+        C01UM,
+      </if>
+      <if test="c01ve != null" >
+        C01VE,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="a0100 != null" >
+        #{a0100,jdbcType=VARCHAR},
+      </if>
+      <if test="a0000 != null" >
+        #{a0000,jdbcType=DECIMAL},
+      </if>
+      <if test="b0110 != null" >
+        #{b0110,jdbcType=VARCHAR},
+      </if>
+      <if test="a0111 != null" >
+        #{a0111,jdbcType=TIMESTAMP},
+      </if>
+      <if test="a0107 != null" >
+        #{a0107,jdbcType=VARCHAR},
+      </if>
+      <if test="a0177 != null" >
+        #{a0177,jdbcType=VARCHAR},
+      </if>
+      <if test="a0121 != null" >
+        #{a0121,jdbcType=VARCHAR},
+      </if>
+      <if test="e0127 != null" >
+        #{e0127,jdbcType=VARCHAR},
+      </if>
+      <if test="state != null" >
+        #{state,jdbcType=VARCHAR},
+      </if>
+      <if test="c0101 != null" >
+        #{c0101,jdbcType=DECIMAL},
+      </if>
+      <if test="e01a1 != null" >
+        #{e01a1,jdbcType=VARCHAR},
+      </if>
+      <if test="createtime != null" >
+        #{createtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="modtime != null" >
+        #{modtime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createusername != null" >
+        #{createusername,jdbcType=VARCHAR},
+      </if>
+      <if test="modusername != null" >
+        #{modusername,jdbcType=VARCHAR},
+      </if>
+      <if test="username != null" >
+        #{username,jdbcType=VARCHAR},
+      </if>
+      <if test="userpassword != null" >
+        #{userpassword,jdbcType=VARCHAR},
+      </if>
+      <if test="groups != null" >
+        #{groups,jdbcType=VARCHAR},
+      </if>
+      <if test="c0183 != null" >
+        #{c0183,jdbcType=TIMESTAMP},
+      </if>
+      <if test="c0181 != null" >
+        #{c0181,jdbcType=VARCHAR},
+      </if>
+      <if test="modtime1 != null" >
+        #{modtime1,jdbcType=TIMESTAMP},
+      </if>
+      <if test="e0122 != null" >
+        #{e0122,jdbcType=VARCHAR},
+      </if>
+      <if test="a0101 != null" >
+        #{a0101,jdbcType=VARCHAR},
+      </if>
+      <if test="c0104 != null" >
+        #{c0104,jdbcType=VARCHAR},
+      </if>
+      <if test="c010a != null" >
+        #{c010a,jdbcType=VARCHAR},
+      </if>
+      <if test="c01ui != null" >
+        #{c01ui,jdbcType=VARCHAR},
+      </if>
+      <if test="c0109 != null" >
+        #{c0109,jdbcType=VARCHAR},
+      </if>
+      <if test="c01ut != null" >
+        #{c01ut,jdbcType=VARCHAR},
+      </if>
+      <if test="e0104 != null" >
+        #{e0104,jdbcType=VARCHAR},
+      </if>
+      <if test="a0174 != null" >
+        #{a0174,jdbcType=VARCHAR},
+      </if>
+      <if test="e0126 != null" >
+        #{e0126,jdbcType=VARCHAR},
+      </if>
+      <if test="c01uy != null" >
+        #{c01uy,jdbcType=VARCHAR},
+      </if>
+      <if test="c01uz != null" >
+        #{c01uz,jdbcType=VARCHAR},
+      </if>
+      <if test="c01uw != null" >
+        #{c01uw,jdbcType=TIMESTAMP},
+      </if>
+      <if test="c01ux != null" >
+        #{c01ux,jdbcType=VARCHAR},
+      </if>
+      <if test="a01z0 != null" >
+        #{a01z0,jdbcType=VARCHAR},
+      </if>
+      <if test="c01v1 != null" >
+        #{c01v1,jdbcType=VARCHAR},
+      </if>
+      <if test="c01v2 != null" >
+        #{c01v2,jdbcType=TIMESTAMP},
+      </if>
+      <if test="c01v4 != null" >
+        #{c01v4,jdbcType=VARCHAR},
+      </if>
+      <if test="c01v6 != null" >
+        #{c01v6,jdbcType=DECIMAL},
+      </if>
+      <if test="c01v7 != null" >
+        #{c01v7,jdbcType=VARCHAR},
+      </if>
+      <if test="c01vb != null" >
+        #{c01vb,jdbcType=VARCHAR},
+      </if>
+      <if test="c01v5 != null" >
+        #{c01v5,jdbcType=VARCHAR},
+      </if>
+      <if test="c01vc != null" >
+        #{c01vc,jdbcType=VARCHAR},
+      </if>
+      <if test="guidkey != null" >
+        #{guidkey,jdbcType=VARCHAR},
+      </if>
+      <if test="c01us != null" >
+        #{c01us,jdbcType=VARCHAR},
+      </if>
+      <if test="c01vd != null" >
+        #{c01vd,jdbcType=VARCHAR},
+      </if>
+      <if test="c01um != null" >
+        #{c01um,jdbcType=VARCHAR},
+      </if>
+      <if test="c01ve != null" >
+        #{c01ve,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gree.gree_x.model.ehrsoft.HrUserExample" resultType="java.lang.Integer" >
+    select count(*) from EHRSOFT.USRA01
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+</mapper>

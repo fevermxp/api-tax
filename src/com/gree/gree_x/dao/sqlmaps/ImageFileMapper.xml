@@ -1,0 +1,321 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gree.gree_x.dao.ImageFileMapper" >
+  <resultMap id="BaseResultMap" type="com.gree.gree_x.model.ImageFile" >
+    <result column="imagefileid" property="imagefileid" jdbcType="INTEGER" />
+    <result column="imagefilename" property="imagefilename" jdbcType="VARCHAR" />
+    <result column="imagefiletype" property="imagefiletype" jdbcType="VARCHAR" />
+    <result column="imagefileused" property="imagefileused" jdbcType="INTEGER" />
+    <result column="filerealpath" property="filerealpath" jdbcType="VARCHAR" />
+    <result column="iszip" property="iszip" jdbcType="CHAR" />
+    <result column="isencrypt" property="isencrypt" jdbcType="CHAR" />
+    <result column="fileSize" property="filesize" jdbcType="VARCHAR" />
+    <result column="downloads" property="downloads" jdbcType="INTEGER" />
+    <result column="miniimgpath" property="miniimgpath" jdbcType="VARCHAR" />
+    <result column="imgsize" property="imgsize" jdbcType="VARCHAR" />
+    <result column="isFTP" property="isftp" jdbcType="CHAR" />
+    <result column="FTPConfigId" property="ftpconfigid" jdbcType="INTEGER" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.gree.gree_x.model.ImageFile" extends="BaseResultMap" >
+    <result column="imagefile" property="imagefile" jdbcType="LONGVARBINARY" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    imagefileid, imagefilename, imagefiletype, imagefileused, filerealpath, iszip, isencrypt, 
+    fileSize, downloads, miniimgpath, imgsize, isFTP, FTPConfigId
+  </sql>
+  <sql id="Blob_Column_List" >
+    imagefile
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.gree.gree_x.model.ImageFileExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from ImageFile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gree.gree_x.model.ImageFileExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from ImageFile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <delete id="deleteByExample" parameterType="com.gree.gree_x.model.ImageFileExample" >
+    delete from ImageFile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gree.gree_x.model.ImageFile" >
+    insert into ImageFile (imagefileid, imagefilename, imagefiletype, 
+      imagefileused, filerealpath, iszip, 
+      isencrypt, fileSize, downloads, 
+      miniimgpath, imgsize, isFTP, 
+      FTPConfigId, imagefile)
+    values (#{imagefileid,jdbcType=INTEGER}, #{imagefilename,jdbcType=VARCHAR}, #{imagefiletype,jdbcType=VARCHAR}, 
+      #{imagefileused,jdbcType=INTEGER}, #{filerealpath,jdbcType=VARCHAR}, #{iszip,jdbcType=CHAR}, 
+      #{isencrypt,jdbcType=CHAR}, #{filesize,jdbcType=VARCHAR}, #{downloads,jdbcType=INTEGER}, 
+      #{miniimgpath,jdbcType=VARCHAR}, #{imgsize,jdbcType=VARCHAR}, #{isftp,jdbcType=CHAR}, 
+      #{ftpconfigid,jdbcType=INTEGER}, #{imagefile,jdbcType=LONGVARBINARY})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gree.gree_x.model.ImageFile" >
+    insert into ImageFile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="imagefileid != null" >
+        imagefileid,
+      </if>
+      <if test="imagefilename != null" >
+        imagefilename,
+      </if>
+      <if test="imagefiletype != null" >
+        imagefiletype,
+      </if>
+      <if test="imagefileused != null" >
+        imagefileused,
+      </if>
+      <if test="filerealpath != null" >
+        filerealpath,
+      </if>
+      <if test="iszip != null" >
+        iszip,
+      </if>
+      <if test="isencrypt != null" >
+        isencrypt,
+      </if>
+      <if test="filesize != null" >
+        fileSize,
+      </if>
+      <if test="downloads != null" >
+        downloads,
+      </if>
+      <if test="miniimgpath != null" >
+        miniimgpath,
+      </if>
+      <if test="imgsize != null" >
+        imgsize,
+      </if>
+      <if test="isftp != null" >
+        isFTP,
+      </if>
+      <if test="ftpconfigid != null" >
+        FTPConfigId,
+      </if>
+      <if test="imagefile != null" >
+        imagefile,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="imagefileid != null" >
+        #{imagefileid,jdbcType=INTEGER},
+      </if>
+      <if test="imagefilename != null" >
+        #{imagefilename,jdbcType=VARCHAR},
+      </if>
+      <if test="imagefiletype != null" >
+        #{imagefiletype,jdbcType=VARCHAR},
+      </if>
+      <if test="imagefileused != null" >
+        #{imagefileused,jdbcType=INTEGER},
+      </if>
+      <if test="filerealpath != null" >
+        #{filerealpath,jdbcType=VARCHAR},
+      </if>
+      <if test="iszip != null" >
+        #{iszip,jdbcType=CHAR},
+      </if>
+      <if test="isencrypt != null" >
+        #{isencrypt,jdbcType=CHAR},
+      </if>
+      <if test="filesize != null" >
+        #{filesize,jdbcType=VARCHAR},
+      </if>
+      <if test="downloads != null" >
+        #{downloads,jdbcType=INTEGER},
+      </if>
+      <if test="miniimgpath != null" >
+        #{miniimgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="imgsize != null" >
+        #{imgsize,jdbcType=VARCHAR},
+      </if>
+      <if test="isftp != null" >
+        #{isftp,jdbcType=CHAR},
+      </if>
+      <if test="ftpconfigid != null" >
+        #{ftpconfigid,jdbcType=INTEGER},
+      </if>
+      <if test="imagefile != null" >
+        #{imagefile,jdbcType=LONGVARBINARY},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gree.gree_x.model.ImageFileExample" resultType="java.lang.Integer" >
+    select count(*) from ImageFile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update ImageFile
+    <set >
+      <if test="record.imagefileid != null" >
+        imagefileid = #{record.imagefileid,jdbcType=INTEGER},
+      </if>
+      <if test="record.imagefilename != null" >
+        imagefilename = #{record.imagefilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imagefiletype != null" >
+        imagefiletype = #{record.imagefiletype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imagefileused != null" >
+        imagefileused = #{record.imagefileused,jdbcType=INTEGER},
+      </if>
+      <if test="record.filerealpath != null" >
+        filerealpath = #{record.filerealpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.iszip != null" >
+        iszip = #{record.iszip,jdbcType=CHAR},
+      </if>
+      <if test="record.isencrypt != null" >
+        isencrypt = #{record.isencrypt,jdbcType=CHAR},
+      </if>
+      <if test="record.filesize != null" >
+        fileSize = #{record.filesize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.downloads != null" >
+        downloads = #{record.downloads,jdbcType=INTEGER},
+      </if>
+      <if test="record.miniimgpath != null" >
+        miniimgpath = #{record.miniimgpath,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imgsize != null" >
+        imgsize = #{record.imgsize,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isftp != null" >
+        isFTP = #{record.isftp,jdbcType=CHAR},
+      </if>
+      <if test="record.ftpconfigid != null" >
+        FTPConfigId = #{record.ftpconfigid,jdbcType=INTEGER},
+      </if>
+      <if test="record.imagefile != null" >
+        imagefile = #{record.imagefile,jdbcType=LONGVARBINARY},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update ImageFile
+    set imagefileid = #{record.imagefileid,jdbcType=INTEGER},
+      imagefilename = #{record.imagefilename,jdbcType=VARCHAR},
+      imagefiletype = #{record.imagefiletype,jdbcType=VARCHAR},
+      imagefileused = #{record.imagefileused,jdbcType=INTEGER},
+      filerealpath = #{record.filerealpath,jdbcType=VARCHAR},
+      iszip = #{record.iszip,jdbcType=CHAR},
+      isencrypt = #{record.isencrypt,jdbcType=CHAR},
+      fileSize = #{record.filesize,jdbcType=VARCHAR},
+      downloads = #{record.downloads,jdbcType=INTEGER},
+      miniimgpath = #{record.miniimgpath,jdbcType=VARCHAR},
+      imgsize = #{record.imgsize,jdbcType=VARCHAR},
+      isFTP = #{record.isftp,jdbcType=CHAR},
+      FTPConfigId = #{record.ftpconfigid,jdbcType=INTEGER},
+      imagefile = #{record.imagefile,jdbcType=LONGVARBINARY}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update ImageFile
+    set imagefileid = #{record.imagefileid,jdbcType=INTEGER},
+      imagefilename = #{record.imagefilename,jdbcType=VARCHAR},
+      imagefiletype = #{record.imagefiletype,jdbcType=VARCHAR},
+      imagefileused = #{record.imagefileused,jdbcType=INTEGER},
+      filerealpath = #{record.filerealpath,jdbcType=VARCHAR},
+      iszip = #{record.iszip,jdbcType=CHAR},
+      isencrypt = #{record.isencrypt,jdbcType=CHAR},
+      fileSize = #{record.filesize,jdbcType=VARCHAR},
+      downloads = #{record.downloads,jdbcType=INTEGER},
+      miniimgpath = #{record.miniimgpath,jdbcType=VARCHAR},
+      imgsize = #{record.imgsize,jdbcType=VARCHAR},
+      isFTP = #{record.isftp,jdbcType=CHAR},
+      FTPConfigId = #{record.ftpconfigid,jdbcType=INTEGER}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>

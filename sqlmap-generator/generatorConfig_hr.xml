@@ -1,0 +1,227 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE generatorConfiguration
+  PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+  "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
+
+<generatorConfiguration>
+	
+  <classPathEntry location="ojdbc6.jar"/>
+  
+  <context id="sysGenerator" targetRuntime="MyBatis3">
+  	<!--
+  	<plugin type="org.mybatis.generator.plugins.OraclePaginationPlugin"></plugin>
+  	-->
+  	
+  	<commentGenerator>
+    	<property name="suppressAllComments" value="true" />
+    	<property name="suppressDate" value="true" />
+	</commentGenerator>
+	
+    <jdbcConnection driverClass="oracle.jdbc.driver.OracleDriver"
+        connectionURL="jdbc:oracle:thin:@172.73.1.106:1521:EHR"
+        userId="ehrsoft"
+        password="yksoft1919">
+    </jdbcConnection>
+
+    <javaTypeResolver >
+      <property name="forceBigDecimals" value="false" />
+    </javaTypeResolver>
+    
+    <javaModelGenerator targetPackage="com.gree.gree_x.model" targetProject="E:\developed\eclipse_nwe_indigo\workplace\api-tax\src">
+      <property name="enableSubPackages" value="true" />
+      <property name="rootClass" value="BaseModel"/>
+      <property name="trimStrings" value="true" />
+    </javaModelGenerator>
+
+    <sqlMapGenerator targetPackage="com.gree.gree_x.dao.sqlmaps"  targetProject="E:\developed\eclipse_nwe_indigo\workplace\api-tax\src">
+      <property name="enableSubPackages" value="true" />
+    </sqlMapGenerator>
+
+    <javaClientGenerator type="XMLMAPPER" targetPackage="com.gree.gree_x.dao"  targetProject="E:\developed\eclipse_nwe_indigo\workplace\api-tax\src">
+      <property name="enableSubPackages" value="true" />
+    </javaClientGenerator>
+    
+    <table schema="EHRSOFT" tableName="ORGANIZATION" domainObjectName="Organization"
+    	enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false">
+    </table>
+<!--    
+    <table tableName="HrmDepartment" domainObjectName="HrmDepartment" 
+		enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false"
+		>
+		<columnOverride column="bmfzr" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="bmfgld" javaType="java.lang.String" jdbcType="VARCHAR" />
+	</table>
+
+    <table tableName="formtable_main_115" domainObjectName="Workflow_115" 
+		enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false"
+		>
+		<columnOverride column="tafjzc" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="bcnyy" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="bklsyy" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="yxxyms" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="lsyjfj" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="wxxyms" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="tgcxdms" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="lsjy" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="fujian" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<columnOverride column="csyjbz" javaType="java.lang.String" jdbcType="VARCHAR" />
+		<ignoreColumn column="id" />
+	</table>
+    
+
+	<table tableName="DocImageFile" domainObjectName="DocImageFile">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="ImageFile" domainObjectName="ImageFile">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="SequenceIndex" domainObjectName="SequenceIndex">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="workflow_requestsequence" domainObjectName="Requestsequence">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+
+
+    <table tableName="pd_report" domainObjectName="Report">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+
+    <table tableName="kpi_user_role" domainObjectName="UserRoleShip" 
+		enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false"
+		>
+      <property name="useActualColumnNames" value="false"/>
+    </table>
+
+    <table tableName="kpi_dept" domainObjectName="Dept">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="kpi_node" domainObjectName="Node">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="kpi_post" domainObjectName="Post">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="kpi_role" domainObjectName="Role">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="kpi_team" domainObjectName="Team">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="kpi_user" domainObjectName="User">
+    	<property name="useActualColumnNames" value="false"/>
+    </table>
+    
+    <table tableName="kpi_dept_team" domainObjectName="DeptTeamShip" 
+		enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false"
+		>
+      <property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="kpi_role_node" domainObjectName="RoleNodeShip" 
+		enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false"
+		>
+      <property name="useActualColumnNames" value="false"/>
+    </table>
+    <table tableName="kpi_team_post" domainObjectName="TeamPostShip" 
+		enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false"
+		>
+      <property name="useActualColumnNames" value="false"/>
+    </table>
+   -->
+	<!--
+    
+
+	<table tableName="GCP_USER_ROLE_SHIPS" domainObjectName="UserRoleShip" 
+		enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false"
+		>
+      <property name="useActualColumnNames" value="false"/>
+    </table>
+    
+    <table tableName="GCP_ROLE_NODE_SHIPS" domainObjectName="RoleNodeShip" 
+    	enableSelectByPrimaryKey="false"
+		enableSelectByExample="true"
+		enableUpdateByPrimaryKey="false"
+		enableDeleteByPrimaryKey="false"
+		enableDeleteByExample="true"
+		enableCountByExample="true"
+		enableUpdateByExample="false"
+		selectByPrimaryKeyQueryId="false"
+		selectByExampleQueryId="false"
+    	>
+      <property name="useActualColumnNames" value="false"/>
+    </table>
+    
+       -->
+   
+<!--    	<table tableName="GCP_LOGS" domainObjectName="Log" >
+      <property name="useActualColumnNames" value="false"/>
+      <generatedKey column="id" identity="true" sqlStatement="SELECT GCP_SEQ_LOGS.CURRVAL as id FROM DUAL"/>
+    </table> -->
+   
+  </context>
+</generatorConfiguration>

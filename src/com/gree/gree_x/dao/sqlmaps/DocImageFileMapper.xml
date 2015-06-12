@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.gree.gree_x.dao.DocImageFileMapper" >
+  <resultMap id="BaseResultMap" type="com.gree.gree_x.model.DocImageFile" >
+    <result column="id" property="id" jdbcType="INTEGER" />
+    <result column="docid" property="docid" jdbcType="INTEGER" />
+    <result column="imagefileid" property="imagefileid" jdbcType="INTEGER" />
+    <result column="imagefilename" property="imagefilename" jdbcType="VARCHAR" />
+    <result column="imagefiledesc" property="imagefiledesc" jdbcType="VARCHAR" />
+    <result column="imagefilewidth" property="imagefilewidth" jdbcType="INTEGER" />
+    <result column="imagefileheight" property="imagefileheight" jdbcType="INTEGER" />
+    <result column="imagefielsize" property="imagefielsize" jdbcType="INTEGER" />
+    <result column="docfiletype" property="docfiletype" jdbcType="VARCHAR" />
+    <result column="versionId" property="versionid" jdbcType="INTEGER" />
+    <result column="versionDetail" property="versiondetail" jdbcType="VARCHAR" />
+    <result column="isextfile" property="isextfile" jdbcType="CHAR" />
+    <result column="hasUsedTemplet" property="hasusedtemplet" jdbcType="CHAR" />
+  </resultMap>
+  <sql id="Example_Where_Clause" >
+    <where >
+      <foreach collection="oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause" >
+    <where >
+      <foreach collection="example.oredCriteria" item="criteria" separator="or" >
+        <if test="criteria.valid" >
+          <trim prefix="(" suffix=")" prefixOverrides="and" >
+            <foreach collection="criteria.criteria" item="criterion" >
+              <choose >
+                <when test="criterion.noValue" >
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue" >
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue" >
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue" >
+                  and ${criterion.condition}
+                  <foreach collection="criterion.value" item="listItem" open="(" close=")" separator="," >
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List" >
+    id, docid, imagefileid, imagefilename, imagefiledesc, imagefilewidth, imagefileheight, 
+    imagefielsize, docfiletype, versionId, versionDetail, isextfile, hasUsedTemplet
+  </sql>
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.gree.gree_x.model.DocImageFileExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from DocImageFile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+  </select>
+  <select id="selectMaxId" resultType="java.lang.Integer">
+  	select ISNULL((select MAX([id]) from [ecology].[dbo].[DocImageFile]),0)
+  </select>
+  <delete id="deleteByExample" parameterType="com.gree.gree_x.model.DocImageFileExample" >
+    delete from DocImageFile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </delete>
+  <insert id="insert" parameterType="com.gree.gree_x.model.DocImageFile" >
+    insert into DocImageFile (id, docid, imagefileid, 
+      imagefilename, imagefiledesc, imagefilewidth, 
+      imagefileheight, imagefielsize, docfiletype, 
+      versionId, versionDetail, isextfile, 
+      hasUsedTemplet)
+    values (#{id,jdbcType=INTEGER}, #{docid,jdbcType=INTEGER}, #{imagefileid,jdbcType=INTEGER}, 
+      #{imagefilename,jdbcType=VARCHAR}, #{imagefiledesc,jdbcType=VARCHAR}, #{imagefilewidth,jdbcType=INTEGER}, 
+      #{imagefileheight,jdbcType=INTEGER}, #{imagefielsize,jdbcType=INTEGER}, #{docfiletype,jdbcType=VARCHAR}, 
+      #{versionid,jdbcType=INTEGER}, #{versiondetail,jdbcType=VARCHAR}, #{isextfile,jdbcType=CHAR}, 
+      #{hasusedtemplet,jdbcType=CHAR})
+  </insert>
+  <insert id="insertSelective" parameterType="com.gree.gree_x.model.DocImageFile" >
+    insert into DocImageFile
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        id,
+      </if>
+      <if test="docid != null" >
+        docid,
+      </if>
+      <if test="imagefileid != null" >
+        imagefileid,
+      </if>
+      <if test="imagefilename != null" >
+        imagefilename,
+      </if>
+      <if test="imagefiledesc != null" >
+        imagefiledesc,
+      </if>
+      <if test="imagefilewidth != null" >
+        imagefilewidth,
+      </if>
+      <if test="imagefileheight != null" >
+        imagefileheight,
+      </if>
+      <if test="imagefielsize != null" >
+        imagefielsize,
+      </if>
+      <if test="docfiletype != null" >
+        docfiletype,
+      </if>
+      <if test="versionid != null" >
+        versionId,
+      </if>
+      <if test="versiondetail != null" >
+        versionDetail,
+      </if>
+      <if test="isextfile != null" >
+        isextfile,
+      </if>
+      <if test="hasusedtemplet != null" >
+        hasUsedTemplet,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="id != null" >
+        #{id,jdbcType=INTEGER},
+      </if>
+      <if test="docid != null" >
+        #{docid,jdbcType=INTEGER},
+      </if>
+      <if test="imagefileid != null" >
+        #{imagefileid,jdbcType=INTEGER},
+      </if>
+      <if test="imagefilename != null" >
+        #{imagefilename,jdbcType=VARCHAR},
+      </if>
+      <if test="imagefiledesc != null" >
+        #{imagefiledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="imagefilewidth != null" >
+        #{imagefilewidth,jdbcType=INTEGER},
+      </if>
+      <if test="imagefileheight != null" >
+        #{imagefileheight,jdbcType=INTEGER},
+      </if>
+      <if test="imagefielsize != null" >
+        #{imagefielsize,jdbcType=INTEGER},
+      </if>
+      <if test="docfiletype != null" >
+        #{docfiletype,jdbcType=VARCHAR},
+      </if>
+      <if test="versionid != null" >
+        #{versionid,jdbcType=INTEGER},
+      </if>
+      <if test="versiondetail != null" >
+        #{versiondetail,jdbcType=VARCHAR},
+      </if>
+      <if test="isextfile != null" >
+        #{isextfile,jdbcType=CHAR},
+      </if>
+      <if test="hasusedtemplet != null" >
+        #{hasusedtemplet,jdbcType=CHAR},
+      </if>
+    </trim>
+  </insert>
+  <select id="countByExample" parameterType="com.gree.gree_x.model.DocImageFileExample" resultType="java.lang.Integer" >
+    select count(*) from DocImageFile
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+  </select>
+  <update id="updateByExampleSelective" parameterType="map" >
+    update DocImageFile
+    <set >
+      <if test="record.id != null" >
+        id = #{record.id,jdbcType=INTEGER},
+      </if>
+      <if test="record.docid != null" >
+        docid = #{record.docid,jdbcType=INTEGER},
+      </if>
+      <if test="record.imagefileid != null" >
+        imagefileid = #{record.imagefileid,jdbcType=INTEGER},
+      </if>
+      <if test="record.imagefilename != null" >
+        imagefilename = #{record.imagefilename,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imagefiledesc != null" >
+        imagefiledesc = #{record.imagefiledesc,jdbcType=VARCHAR},
+      </if>
+      <if test="record.imagefilewidth != null" >
+        imagefilewidth = #{record.imagefilewidth,jdbcType=INTEGER},
+      </if>
+      <if test="record.imagefileheight != null" >
+        imagefileheight = #{record.imagefileheight,jdbcType=INTEGER},
+      </if>
+      <if test="record.imagefielsize != null" >
+        imagefielsize = #{record.imagefielsize,jdbcType=INTEGER},
+      </if>
+      <if test="record.docfiletype != null" >
+        docfiletype = #{record.docfiletype,jdbcType=VARCHAR},
+      </if>
+      <if test="record.versionid != null" >
+        versionId = #{record.versionid,jdbcType=INTEGER},
+      </if>
+      <if test="record.versiondetail != null" >
+        versionDetail = #{record.versiondetail,jdbcType=VARCHAR},
+      </if>
+      <if test="record.isextfile != null" >
+        isextfile = #{record.isextfile,jdbcType=CHAR},
+      </if>
+      <if test="record.hasusedtemplet != null" >
+        hasUsedTemplet = #{record.hasusedtemplet,jdbcType=CHAR},
+      </if>
+    </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExample" parameterType="map" >
+    update DocImageFile
+    set id = #{record.id,jdbcType=INTEGER},
+      docid = #{record.docid,jdbcType=INTEGER},
+      imagefileid = #{record.imagefileid,jdbcType=INTEGER},
+      imagefilename = #{record.imagefilename,jdbcType=VARCHAR},
+      imagefiledesc = #{record.imagefiledesc,jdbcType=VARCHAR},
+      imagefilewidth = #{record.imagefilewidth,jdbcType=INTEGER},
+      imagefileheight = #{record.imagefileheight,jdbcType=INTEGER},
+      imagefielsize = #{record.imagefielsize,jdbcType=INTEGER},
+      docfiletype = #{record.docfiletype,jdbcType=VARCHAR},
+      versionId = #{record.versionid,jdbcType=INTEGER},
+      versionDetail = #{record.versiondetail,jdbcType=VARCHAR},
+      isextfile = #{record.isextfile,jdbcType=CHAR},
+      hasUsedTemplet = #{record.hasusedtemplet,jdbcType=CHAR}
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+</mapper>
